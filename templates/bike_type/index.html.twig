@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BikeType index{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <h1>BikeType index</h1>
+    <div class="col-12">
+
+    <table id="data-table-list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Type membership</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bike_type in bike_types %}
+            <tr>
+                <td>{{ bike_type.id }}</td>
+                <td>{{ bike_type.description }}</td>
+                <td>{{ bike_type.typeMembership.description }}</td>
+                <td>{{ bike_type.status ? 'Yes' : 'No' }}</td>
+                <td>{{ bike_type.createdAt ? bike_type.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('bike_type_edit', {'id': bike_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('bike_type_new') }}">Create new</a>
+
+    </div>
+</div>
+{% endblock %}

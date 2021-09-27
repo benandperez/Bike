@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Rent{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <h1>Create new Rent</h1>
+
+    {{ include('rent/_form.html.twig') }}
+
+    <a href="{{ path('rent_index') }}">back to list</a>
+</div>
+{% endblock %}
+{#{% block myScripts %}#}
+{#    <script>#}
+{#        $('#rent_days').change(function () {#}
+{#            var val = $(this).val();#}
+{#            console.log(val);#}
+{#        })#}
+{#    </script>#}
+{#{% endblock %}#}

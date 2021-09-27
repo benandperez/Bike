@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}{% endblock %}
+{% block content %}
+<div class="row content">
+    <h1>Bike index</h1>
+
+     <div class="col-12">
+
+        <table id="data-table-list">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Model</th>
+                    <th>Color</th>
+                    <th>Status</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for bike in bikes %}
+                <tr>
+                    <td>{{ bike.id }}</td>
+                    <td>{{ bike.description }}</td>
+                    <td>{{ bike.model }}</td>
+                    <td>{{ bike.color }}</td>
+                    <td>{{ bike.status }}</td>
+                    <td>
+                        <a href="{{ path('bike_edit', {'id': bike.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+     </div>
+ </div>
+
+    <a href="{{ path('bike_new') }}">Create new</a>
+{% endblock %}

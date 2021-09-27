@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rent index{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <h1>Rent index</h1>
+<div class="col-12">
+    <table id="data-table-list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Days</th>
+                <th>Client</th>
+                <th>Total</th>
+                <th>Fecha</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rent in rents %}
+            <tr>
+                <td>{{ rent.id }}</td>
+                <td>{{ rent.days }}</td>
+                <td>{{ rent.client.firstName }}</td>
+                <td>{{ rent.total }} </td>
+                <td>{{ rent.date ? rent.date|date('Y-m-d') : '' }}</td>
+                <td>{{ rent.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('rent_edit', {'id': rent.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rent_new') }}">Create new</a>
+
+</div>
+</div>
+{% endblock %}

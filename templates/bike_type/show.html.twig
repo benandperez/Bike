@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BikeType{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <h1>BikeType</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bike_type.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ bike_type.description }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ bike_type.status ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ bike_type.createdAt ? bike_type.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ bike_type.updatedAt ? bike_type.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('bike_type_index') }}">back to list</a>
+
+    <a href="{{ path('bike_type_edit', {'id': bike_type.id}) }}">edit</a>
+
+    {{ include('bike_type/_delete_form.html.twig') }}
+</div>
+{% endblock %}

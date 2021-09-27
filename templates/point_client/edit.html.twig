@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PointClient{% endblock %}
+
+{% block content %}
+<div class="row content">
+    <h1>Edit PointClient</h1>
+
+    {{ include('point_client/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('point_client_index') }}">back to list</a>
+
+    {{ include('point_client/_delete_form.html.twig') }}
+</div>
+{% endblock %}
